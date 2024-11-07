@@ -10,12 +10,12 @@ import UIKit
 public extension UIDevice{
     
     /// pares the device name as the standard name
-        var modelName: String {
+        let modelName: String {
 
             #if targetEnvironment(simulator)
                 let identifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"]!
             #else
-                var systemInfo = utsname()
+                let systemInfo = utsname()
                 uname(&systemInfo)
                 let machineMirror = Mirror(reflecting: systemInfo.machine)
                 let identifier = machineMirror.children.reduce("") { identifier, element in
@@ -81,7 +81,7 @@ public extension UIDevice{
 
      func getCPUName() -> String
         {
-            var processorNames = Array(CPUinfo().keys)
+            let processorNames = Array(CPUinfo().keys)
             return processorNames[0]
         }
     
@@ -90,7 +90,7 @@ public extension UIDevice{
         let identifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"]!
         #else
         
-        var systemInfo = utsname()
+        let systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
         let identifier = machineMirror.children.reduce("") { identifier, element in
